@@ -14,6 +14,7 @@ export default function Home({ covids }) {
         <meta name="keywords" content="covid, covid19, stats" />
         <meta name="author" content="DoctorPok" />
         <meta name="robots" content="index" />
+        <meta property="og:image" content="../public/favicon.ico"></meta>
       </Head>
       <main class="container">
         <div class="top">
