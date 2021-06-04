@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/DoctorPok42/Covid-Bot/blob/main/assets/logo.png">
+  <img src="https://github.com/DoctorPok42/Covid-Bot/blob/main/assets/logo.png" />
 </div>
 
 # Stats-Covid19 [![CodeFactor](https://www.codefactor.io/repository/github/doctorpok42/stats-covid19/badge)](https://www.codefactor.io/repository/github/doctorpok42/stats-covid19)
@@ -13,3 +13,9 @@ Il est en mesure de vous affichez les stats globals du covid ou les stats par pa
 <hr />
 
 Voici son lien : [https://stats-covid19.vercel.app/](https://stats-covid19.vercel.app/)
+
+<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/index.PNG" />
+
+<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/country.PNG" />
+
+<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/selected-country.PNG" />
