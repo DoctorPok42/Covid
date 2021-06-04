@@ -7,6 +7,13 @@ export default function Home({ covids }) {
     <>
       <Head>
         <title>Covid-Stats</title>
+        <meta charset="UTF8" />
+        <meta name="theme-color" content="#6495ed" />
+        <meta name="title" content="Covid-Stats" />
+        <meta name="description" content="Site de stats pour la covid19" />
+        <meta name="keywords" content="covid, covid19, stats" />
+        <meta name="author" content="DoctorPok" />
+        <meta name="robots" content="index" />
       </Head>
       <main class="container">
         <div class="top">
