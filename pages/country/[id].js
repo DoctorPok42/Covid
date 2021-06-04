@@ -3,30 +3,34 @@ import Link from "next/link";
 const moment = require("moment");
 
 export default function Post({ covid }) {
-  let colors = [
-    "#ED4245",
-    "#F9A72D",
-    "#5865F2",
-    "#57F287",
-    "#5BD7E5",
-    "#E367D3",
-    "#FEE75C",
-    "#B05AE9",
-    "#EB459E",
-  ];
+  // let colors = [
+  //   "#ED4245",
+  //   "#F9A72D",
+  //   "#5865F2",
+  //   "#57F287",
+  //   "#5BD7E5",
+  //   "#E367D3",
+  //   "#FEE75C",
+  //   "#B05AE9",
+  //   "#EB459E",
+  // ];
 
-  var color = colors[Math.floor(Math.random() * colors.length)];
+  // var color = colors[Math.floor(Math.random() * colors.length)];
   return (
     <>
       <Head>
         <title>{covid.country} | Covid-Stats</title>
         <meta charset="UTF8" />
-        <meta name="theme-color" content={color} />
+        <meta name="theme-color" content="#6495ed" />
         <meta name="title" content={`${covid.country} | Covid-Stats`} />
         <meta name="description" content="Site de stats pour la covid19" />
         <meta name="keywords" content="covid, covid19, stats" />
         <meta name="author" content="DoctorPok" />
         <meta name="robots" content="index" />
+        <meta
+          property="og:image"
+          content="https://zupimages.net/up/21/22/3e08.png"
+        ></meta>
       </Head>
       <main class="container">
         <div class="top">
