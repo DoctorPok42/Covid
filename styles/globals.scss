@@ -181,6 +181,11 @@ span {
         opacity: 1;
       }
     }
+    .box:active {
+      h2 {
+        font-size: 500%;
+      }
+    }
   }
 
   .content3 {
