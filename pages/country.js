@@ -52,7 +52,7 @@ export default function Home({ covids }) {
 
 export async function getStaticProps() {
   const covids = await fetch(
-    `https://disease.sh/v3/covid-19/countries/France%2C%20US%2C%20United%20Kingdom%2C%20China%2C%20India%2C%20Japan%2C%20Canada%2C%20Germany%2C%20Spain%2C%20Russia%2C%20South%20Korea%2C%20Egypt%2C%20Australia%2C%20Italy%2C%20Greece%2C%20Israel%2C%20Palestine%2C%20Liechtenstein%2C%20Cameroon%2C%20South%20Africa%2C%20Brazil?yesterday=true&twoDaysAgo=true&allowNull=true`
+    `https://disease.sh/v3/covid-19/countries/France%2CUS%2CUnited%20Kingdom%2CChina%2CIndia%2CJapan%2CCanada%2CGermany%2CSpain%2CRussia%2CSouth%20Korea%2CEgypt%2CAustralia%2CItaly%2CGreece%2CIsrael%2CPalestine%2CLiechtenstein%2CCameroon%2CSouth%20Africa%2CBrazil%2CIreland%2CNew%20Zealand%2CFrench%20Polynesia%2CMexico%2CSeychelles%2CAlgeria?yesterday=true&twoDaysAgo=true&allowNull=true`
   ).then((r) => r.json());
 
   return {
