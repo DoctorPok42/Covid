@@ -162,7 +162,7 @@ export default function Post({ covid }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const covid = await fetch(
     `https://disease.sh/v3/covid-19/countries/${params.id}?yesterday=true&twoDaysAgo=true&strict=true&allowNull=true`
   ).then((r) => r.json());
@@ -173,7 +173,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const covids = await fetch(
     `https://disease.sh/v3/covid-19/countries/US%2C%20France%2C%20United%20Kingdom%2C%20China%2C%20India%2C%20Japan%2C%20Canada%2C%20Germany%2C%20Spain%2C%20Russia%2C%20South%20Korea%2C%20Egypt%2C%20Australia%2C%20Italy%2C%20Greece%2C%20Israel%2C%20Palestine%2C%20Liechtenstein?yesterday=true&twoDaysAgo=true&allowNull=true`
   ).then((r) => r.json());
