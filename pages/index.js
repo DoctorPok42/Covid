@@ -70,7 +70,7 @@ export default function Home({ covids }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const covids = await fetch(
     `https://disease.sh/v3/covid-19/all?yesterday=true&twoDaysAgo=true&allowNull=true`
   ).then((r) => r.json());
