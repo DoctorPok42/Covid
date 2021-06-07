@@ -139,8 +139,8 @@ span {
     justify-content: center;
 
     .box {
-      width: 35vh;
-      height: 20vh;
+      width: 28vh;
+      height: 15vh;
       border-radius: 10px;
       background-color: #1b1b1b;
       margin: 30px;
@@ -159,7 +159,7 @@ span {
         justify-content: center;
         align-items: center;
         text-align: center;
-        font-size: 4vh;
+        font-size: 3vh;
         font-family: nunito;
         color: #fff;
         background-color: rgba(27, 27, 27, 0.7);
@@ -184,7 +184,7 @@ span {
     }
     .box:active {
       h2 {
-        font-size: 200%;
+        font-size: 100%;
       }
     }
   }
