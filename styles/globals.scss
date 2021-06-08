@@ -145,7 +145,7 @@ span {
       background-color: #1b1b1b;
       margin: 30px;
       box-shadow: 10px 10px 10px #1b1b1b;
-      transition: 0.1s;
+      transition: 0.3s;
       overflow: hidden;
       position: relative;
 
@@ -165,7 +165,7 @@ span {
         background-color: rgba(27, 27, 27, 0.7);
         text-transform: uppercase;
         z-index: 10;
-        transition: 0.1s;
+        transition: 0.3s;
       }
       img {
         width: 100%;
@@ -183,8 +183,6 @@ span {
       }
     }
     .box:active {
-      box-shadow: 5px 5px cornflowerblue;
-
       h2 {
         font-size: 210%;
       }
