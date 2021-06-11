@@ -203,14 +203,15 @@ span {
   .content3 {
     width: 95%;
     min-height: 100%;
-    margin-top: 100px;
+    margin-top: 70px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 5vh;
 
     .card {
       width: 30%;
       min-height: 65vh;
-      margin-left: 100px;
       background-color: #1b1b1b;
       border-radius: 10px;
       position: relative;
@@ -327,6 +328,22 @@ span {
             color: coral;
           }
         }
+      }
+    }
+    .gra {
+      width: 90%;
+      height: 65vh;
+      margin-top: 30px;
+      background-color: #1b1b1b;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: hidden;
+
+      .graline {
+        padding: 1%;
+        width: 80%;
       }
     }
   }
