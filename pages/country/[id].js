@@ -1,21 +1,123 @@
+import React, { useRef, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
+const api = require("novelcovid");
 const moment = require("moment");
 
-export default function Post({ covid }) {
-  // let colors = [
-  //   "#ED4245",
-  //   "#F9A72D",
-  //   "#5865F2",
-  //   "#57F287",
-  //   "#5BD7E5",
-  //   "#E367D3",
-  //   "#FEE75C",
-  //   "#B05AE9",
-  //   "#EB459E",
-  // ];
+export default function Post({ covid, lineData }) {
+  console.log(lineData.timeline);
+  let chartRef = useRef();
 
-  // var color = colors[Math.floor(Math.random() * colors.length)];
+  useEffect(() => {
+    let chart = new Chart(chartRef.current, {
+      type: "line",
+      data: {
+        labels: [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+        ],
+        datasets: [
+          {
+            label: "Cases",
+            fill: false,
+            responsive: true,
+            lineTension: 0.1,
+            backgroundColor: "#75C0E0",
+            borderColor: "#75C0E0",
+            pointBorderColor: "#75C0E0",
+            pointHoverBackgroundColor: "#75C0E0",
+            pointHoverBorderColor: "#b9b9b9",
+            pointHoverBorderWidth: 2,
+            pointRadius: 2,
+            pointHitRadius: 10,
+            pointBackgroundColor: "#fff",
+            data: Object.values(lineData.timeline.cases),
+          },
+          {
+            label: "Deaths",
+            fill: false,
+            responsive: true,
+            lineTension: 0.1,
+            backgroundColor: "#DF1C44",
+            borderColor: "#DF1C44",
+            pointBorderColor: "#DF1C44",
+            pointHoverBackgroundColor: "#DF1C44",
+            pointHoverBorderColor: "#b9b9b9",
+            pointHoverBorderWidth: 2,
+            pointRadius: 2,
+            pointHitRadius: 10,
+            pointBackgroundColor: "#fff",
+            data: Object.values(lineData.timeline.deaths),
+          },
+          {
+            label: "Recovered",
+            fill: false,
+            responsive: true,
+            lineTension: 0.1,
+            backgroundColor: "#39A275",
+            borderColor: "#39A275",
+            pointBorderColor: "#39A275",
+            pointHoverBackgroundColor: "#39A275",
+            pointHoverBorderColor: "#b9b9b9",
+            pointHoverBorderWidth: 2,
+            pointRadius: 2,
+            pointHitRadius: 10,
+            pointBackgroundColor: "#fff",
+            data: Object.values(lineData.timeline.recovered),
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+          title: {
+            display: true,
+            text: `${covid.country} graph`,
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -31,6 +133,7 @@ export default function Post({ covid }) {
           property="og:image"
           content="https://zupimages.net/up/21/22/3e08.png"
         ></meta>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </Head>
       <main class="container">
         <div class="top">
@@ -156,6 +259,11 @@ export default function Post({ covid }) {
               <h3>Updated {moment(covid.updated).fromNow()}</h3>
             </div>
           </div>
+          <div class="gra">
+            <div class="graline">
+              <canvas id="myChart" ref={chartRef} />
+            </div>
+          </div>
         </div>
       </main>
     </>
@@ -163,12 +271,17 @@ export default function Post({ covid }) {
 }
 
 export async function getServerSideProps({ params }) {
+  const lineData = ["global", "all"].includes(params.id.toLowerCase())
+    ? { timeline: await api.historical.all({ days: 30 }) }
+    : await api.historical.countries({ country: params.id, days: 30 });
+
   const covid = await fetch(
     `https://disease.sh/v3/covid-19/countries/${params.id}?yesterday=true&twoDaysAgo=true&strict=true&allowNull=true`
   ).then((r) => r.json());
   return {
     props: {
       covid,
+      lineData,
     },
   };
 }
