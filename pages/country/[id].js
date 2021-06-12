@@ -5,45 +5,16 @@ const api = require("novelcovid");
 const moment = require("moment");
 
 export default function Post({ covid, lineData }) {
-  console.log(lineData.timeline);
-  let chartRef = useRef();
+  console.log(lineData);
+  let chartRef1 = useRef();
+  let chartRef2 = useRef();
+  let chartRef3 = useRef();
 
   useEffect(() => {
-    let chart = new Chart(chartRef.current, {
+    let chart1 = new Chart(chartRef1.current, {
       type: "line",
       data: {
-        labels: [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "23",
-          "24",
-          "25",
-          "26",
-          "27",
-          "28",
-          "29",
-          "30",
-        ],
+        labels: Object.keys(lineData.timeline.cases),
         datasets: [
           {
             label: "Cases",
@@ -59,8 +30,41 @@ export default function Post({ covid, lineData }) {
             pointRadius: 2,
             pointHitRadius: 10,
             pointBackgroundColor: "#fff",
+            hoverBorderColor: "#75C0E0",
+            hoverBackgroundColor: "#75C0E0",
             data: Object.values(lineData.timeline.cases),
           },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+          title: {
+            display: true,
+            text: `Cases`,
+            color: "#fff",
+            font: { family: "Nunito", size: 40 },
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+    let chart2 = new Chart(chartRef2.current, {
+      type: "line",
+      data: {
+        labels: Object.keys(lineData.timeline.deaths),
+        datasets: [
           {
             label: "Deaths",
             fill: false,
@@ -77,6 +81,37 @@ export default function Post({ covid, lineData }) {
             pointBackgroundColor: "#fff",
             data: Object.values(lineData.timeline.deaths),
           },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+          title: {
+            display: true,
+            text: `Deaths`,
+            color: "#fff",
+            font: { family: "Nunito", size: 40 },
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+    let chart3 = new Chart(chartRef3.current, {
+      type: "line",
+      data: {
+        labels: Object.keys(lineData.timeline.recovered),
+        datasets: [
           {
             label: "Recovered",
             fill: false,
@@ -103,7 +138,9 @@ export default function Post({ covid, lineData }) {
           },
           title: {
             display: true,
-            text: `${covid.country} graph`,
+            text: `Recovered`,
+            color: "#fff",
+            font: { family: "Nunito", size: 40 },
           },
         },
         scales: {
@@ -149,7 +186,7 @@ export default function Post({ covid, lineData }) {
             </Link>
 
             <Link href={``}>
-              <a id="here">selected country</a>
+              <a id="here">country : {covid.country}</a>
             </Link>
           </div>
         </div>
@@ -261,7 +298,17 @@ export default function Post({ covid, lineData }) {
           </div>
           <div class="gra">
             <div class="graline">
-              <canvas id="myChart" ref={chartRef} />
+              <canvas id="myChart" ref={chartRef1} />
+            </div>
+          </div>
+          <div class="gra">
+            <div class="graline">
+              <canvas id="myChart" ref={chartRef2} />
+            </div>
+          </div>
+          <div class="gra">
+            <div class="graline">
+              <canvas id="myChart" ref={chartRef3} />
             </div>
           </div>
         </div>
