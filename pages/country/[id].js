@@ -46,7 +46,7 @@ export default function Post({ covid, lineData }) {
           title: {
             display: true,
             text: `Cases`,
-            color: "#fff",
+            color: "#b9b9b9",
             font: { family: "Nunito", size: 40 },
           },
         },
@@ -95,7 +95,7 @@ export default function Post({ covid, lineData }) {
           title: {
             display: true,
             text: `Deaths`,
-            color: "#fff",
+            color: "#b9b9b9",
             font: { family: "Nunito", size: 40 },
           },
         },
@@ -144,7 +144,7 @@ export default function Post({ covid, lineData }) {
           title: {
             display: true,
             text: `Recovered`,
-            color: "#fff",
+            color: "#b9b9b9",
             font: { family: "Nunito", size: 40 },
           },
         },
@@ -301,6 +301,9 @@ export default function Post({ covid, lineData }) {
               <h3>Updated {moment(covid.updated).fromNow()}</h3>
             </div>
           </div>
+          <div id="titlegra">
+            <h2>Graph for cases, deaths and recovered for the last 31 days</h2>
+          </div>
           <div class="gra">
             <div class="graline">
               <canvas id="myChart" ref={chartRef1} />
@@ -324,8 +327,8 @@ export default function Post({ covid, lineData }) {
 
 export async function getServerSideProps({ params }) {
   const lineData = ["global", "all"].includes(params.id.toLowerCase())
-    ? { timeline: await api.historical.all({ days: 30 }) }
-    : await api.historical.countries({ country: params.id, days: 30 });
+    ? { timeline: await api.historical.all({ days: 31 }) }
+    : await api.historical.countries({ country: params.id, days: 31 });
 
   const covid = await fetch(
     `https://disease.sh/v3/covid-19/countries/${params.id}?yesterday=true&twoDaysAgo=true&strict=true&allowNull=true`
