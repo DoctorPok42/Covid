@@ -5,7 +5,6 @@ const api = require("novelcovid");
 const moment = require("moment");
 
 export default function Post({ covid, lineData }) {
-  console.log(lineData);
   let chartRef1 = useRef();
   let chartRef2 = useRef();
   let chartRef3 = useRef();
@@ -14,7 +13,10 @@ export default function Post({ covid, lineData }) {
     let chart1 = new Chart(chartRef1.current, {
       type: "line",
       data: {
-        labels: Object.keys(lineData.timeline.cases),
+        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
+          const [month, day, year] = dateString.split("/");
+          return [day, month, year].join("/");
+        }),
         datasets: [
           {
             label: "Cases",
@@ -62,7 +64,10 @@ export default function Post({ covid, lineData }) {
     let chart2 = new Chart(chartRef2.current, {
       type: "line",
       data: {
-        labels: Object.keys(lineData.timeline.deaths),
+        labels: Object.keys(lineData.timeline.deaths).map((dateString) => {
+          const [month, day, year] = dateString.split("/");
+          return [day, month, year].join("/");
+        }),
         datasets: [
           {
             label: "Deaths",
@@ -108,7 +113,10 @@ export default function Post({ covid, lineData }) {
     let chart3 = new Chart(chartRef3.current, {
       type: "line",
       data: {
-        labels: Object.keys(lineData.timeline.recovered),
+        labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
+          const [month, day, year] = dateString.split("/");
+          return [day, month, year].join("/");
+        }),
         datasets: [
           {
             label: "Recovered",
