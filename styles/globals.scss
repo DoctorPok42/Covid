@@ -318,6 +318,11 @@ span {
           background-color: #2b2b2b;
           border-radius: 20px;
         }
+        .gen1 {
+          span {
+            color: cornflowerblue;
+          }
+        }
         .gen2 {
           span {
             color: cadetblue;
@@ -330,20 +335,37 @@ span {
         }
       }
     }
-    .gra {
+
+    #titlegra {
       width: 90%;
-      height: 65vh;
+      height: 60px;
+      border: 5px solid #1b1b1b;
       margin-top: 30px;
-      background-color: #1b1b1b;
+      border-radius: 10px;
+      font-size: 20px;
+      font-family: Nunito;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gra {
+      width: 44.5%;
+      height: 45%;
+      margin: 30px 0.5%;
+      background-color: #2b2b2b;
+      box-shadow: 0 0 0 5px #1b1b1b;
       border-radius: 10px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       overflow: hidden;
       position: relative;
 
-      .graline {
-        width: 84%;
+      canvas {
+        min-height: 37.5vh;
       }
     }
   }
