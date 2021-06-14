@@ -3,6 +3,9 @@ import Link from "next/link";
 const moment = require("moment");
 
 export default function Home({ covids }) {
+  function form(nb) {
+    return new Intl.NumberFormat("de-DE").format(nb);
+  }
   return (
     <>
       <Head>
@@ -39,13 +42,13 @@ export default function Home({ covids }) {
         </div>
         <div class="content">
           <h2>
-            Cases : <span>{covids.todayCases}</span>
+            Cases : <span>{form(covids.todayCases)}</span>
           </h2>
           <h2>
-            Deaths : <span>{covids.todayDeaths}</span>
+            Deaths : <span>{form(covids.todayDeaths)}</span>
           </h2>
           <h2>
-            Recovered : <span>{covids.todayRecovered}</span>
+            Recovered : <span>{form(covids.todayRecovered)}</span>
           </h2>
           <h3>Updated {moment(covids.updated).fromNow()}</h3>
         </div>
@@ -55,13 +58,13 @@ export default function Home({ covids }) {
         </div>
         <div class="content">
           <h2>
-            Cases : <span>{covids.cases}</span>
+            Cases : <span>{form(covids.cases)}</span>
           </h2>
           <h2>
-            Deaths : <span>{covids.deaths}</span>
+            Deaths : <span>{form(covids.deaths)}</span>
           </h2>
           <h2>
-            Recovered : <span>{covids.recovered}</span>
+            Recovered : <span>{form(covids.recovered)}</span>
           </h2>
           <h3>Updated {moment(covids.updated).fromNow()}</h3>
         </div>
