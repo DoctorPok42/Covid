@@ -45,6 +45,14 @@ export default function Home({ covids }) {
             </Link>
           ))}
         </div>
+        <div class="footer">
+          <h2>
+            Made by{" "}
+            <a href="https://github.com/DoctorPok42" target="_blank">
+              DoctorPok
+            </a>
+          </h2>
+        </div>
       </main>
     </>
   );
