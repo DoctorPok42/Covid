@@ -65,6 +65,14 @@ export default function Home({ covids }) {
           </h2>
           <h3>Updated {moment(covids.updated).fromNow()}</h3>
         </div>
+        <div class="footer">
+          <h2>
+            Made by{" "}
+            <a href="https://github.com/DoctorPok42" target="_blank">
+              DoctorPok
+            </a>
+          </h2>
+        </div>
       </main>
     </>
   );
