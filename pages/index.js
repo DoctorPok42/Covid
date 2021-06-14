@@ -21,7 +21,7 @@ export default function Home({ covids }) {
       </Head>
       <main class="container">
         <div class="top">
-          <h1>Covid-Info</h1>
+          <h1>Covid-Stats</h1>
 
           <div class="link">
             <Link href={``}>
