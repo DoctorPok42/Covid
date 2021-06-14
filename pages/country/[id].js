@@ -5,6 +5,10 @@ const api = require("novelcovid");
 const moment = require("moment");
 
 export default function Post({ covid, lineData }) {
+  function form(nb) {
+    return new Intl.NumberFormat("de-DE").format(nb);
+  }
+
   let chartRef1 = useRef();
   let chartRef2 = useRef();
   let chartRef3 = useRef();
@@ -216,7 +220,7 @@ export default function Post({ covid, lineData }) {
             <div class="txt">
               <div class="gen1">
                 <h2>
-                  Cases : <span>{covid.cases}</span>
+                  Cases : <span>{form(covid.cases)}</span>
                   <p>
                     {"( " +
                       (covid.todayCases >= 0 ? "+ " : "- ") +
@@ -228,7 +232,7 @@ export default function Post({ covid, lineData }) {
                   </p>
                 </h2>
                 <h2>
-                  Deaths : <span>{covid.deaths}</span>
+                  Deaths : <span>{form(covid.deaths)}</span>
                   <p>
                     {"( " +
                       (covid.todayDeaths >= 0 ? "+ " : "- ") +
@@ -240,7 +244,7 @@ export default function Post({ covid, lineData }) {
                   </p>
                 </h2>
                 <h2>
-                  Recovered : <span>{covid.recovered}</span>
+                  Recovered : <span>{form(covid.recovered)}</span>
                   <p>
                     {"( " +
                       (covid.todayRecovered >= 0 ? "+ " : "- ") +
@@ -254,16 +258,16 @@ export default function Post({ covid, lineData }) {
               </div>
               <div class="gen2">
                 <h2>
-                  Active : <span>{covid.active}</span>
+                  Active : <span>{form(covid.active)}</span>
                 </h2>
                 <h2>
-                  Critique : <span>{covid.critical}</span>
+                  Critique : <span>{form(covid.critical)}</span>
                 </h2>
                 <h2>
-                  Tests : <span>{covid.tests}</span>
+                  Tests : <span>{form(covid.tests)}</span>
                 </h2>
                 <h2>
-                  Population : <span>{covid.population}</span>
+                  Population : <span>{form(covid.population)}</span>
                 </h2>
               </div>
               <div class="gen3">
