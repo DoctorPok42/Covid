@@ -23,7 +23,7 @@
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background-color: cyan;
+  background-color: cadetblue;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
@@ -459,6 +459,11 @@ span {
     a {
       color: #6495ed;
       text-decoration: none;
+      transition: 0.2s;
+    }
+    a:hover {
+      color: blueviolet;
+      transform: scale(1.05);
     }
   }
 }
