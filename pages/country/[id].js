@@ -24,19 +24,11 @@ export default function Post({ covid, lineData }) {
         datasets: [
           {
             label: "Cases",
-            fill: false,
-            responsive: true,
             backgroundColor: "#75C0E0",
             borderColor: "#75C0E0",
             pointBorderColor: "#75C0E0",
-            pointHoverBackgroundColor: "#75C0E0",
-            pointHoverBorderColor: "#fff",
-            pointHoverBorderWidth: 3,
-            pointRadius: 3,
-            pointHitRadius: 10,
-            pointBackgroundColor: "#fff",
-            hoverBorderColor: "#75C0E0",
-            hoverBackgroundColor: "#75C0E0",
+            pointRadius: 2.5,
+            borderWidth: 2.5,
             data: Object.values(lineData.timeline.cases),
           },
         ],
@@ -75,17 +67,11 @@ export default function Post({ covid, lineData }) {
         datasets: [
           {
             label: "Deaths",
-            fill: false,
-            responsive: true,
             backgroundColor: "#DF1C44",
             borderColor: "#DF1C44",
             pointBorderColor: "#DF1C44",
-            pointHoverBackgroundColor: "#DF1C44",
-            pointHoverBorderColor: "#fff",
-            pointHoverBorderWidth: 3,
-            pointRadius: 3,
-            pointHitRadius: 10,
-            pointBackgroundColor: "#fff",
+            pointRadius: 2.5,
+            borderWidth: 2.5,
             data: Object.values(lineData.timeline.deaths),
           },
         ],
@@ -124,17 +110,11 @@ export default function Post({ covid, lineData }) {
         datasets: [
           {
             label: "Recovered",
-            fill: false,
-            responsive: true,
             backgroundColor: "#39A275",
             borderColor: "#39A275",
             pointBorderColor: "#39A275",
-            pointHoverBackgroundColor: "#39A275",
-            pointHoverBorderColor: "#fff",
-            pointHoverBorderWidth: 3,
-            pointRadius: 3,
-            pointHitRadius: 10,
-            pointBackgroundColor: "#fff",
+            pointRadius: 2.5,
+            borderWidth: 2.5,
             data: Object.values(lineData.timeline.recovered),
           },
         ],
@@ -306,7 +286,10 @@ export default function Post({ covid, lineData }) {
             </div>
           </div>
           <div id="titlegra">
-            <h2>Graph for cases, deaths and recovered for the last 31 days</h2>
+            <h2>
+              Graph for cases, deaths and recovered for the last 31 days in{" "}
+              <span>{covid.country}</span>
+            </h2>
           </div>
           <div class="gra">
             <div class="graline">
