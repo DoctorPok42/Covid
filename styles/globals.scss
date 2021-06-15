@@ -371,6 +371,10 @@ span {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      span {
+        margin: 0;
+      }
     }
 
     .gra {
@@ -378,7 +382,7 @@ span {
       height: 45%;
       margin: 30px 0.5%;
       background-color: #2b2b2b;
-      box-shadow: 0 0 0 5px #1b1b1b;
+      border: 5px solid #1b1b1b;
       border-radius: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -386,13 +390,60 @@ span {
       align-items: center;
       overflow: hidden;
       position: relative;
+      transition: 0.2s;
 
       canvas {
-        min-height: 37.5vh;
+        min-height: 37vh;
       }
     }
+    .gra:hover {
+      box-shadow: 0 5px 5px #1b1b1b;
+    }
   }
+  .graph {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 
+    #titlegra {
+      width: 90%;
+      height: 60px;
+      border: 5px solid #1b1b1b;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      font-size: 20px;
+      font-family: Nunito;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gra {
+      width: 46%;
+      height: 40%;
+      margin: 20px 1%;
+      background-color: #2b2b2b;
+      border: 5px solid #1b1b1b;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      transition: 0.2s;
+
+      canvas {
+        min-height: 35vh;
+      }
+    }
+    .gra:hover {
+      box-shadow: 0 5px 5px #1b1b1b;
+    }
+  }
   .footer {
     margin-top: 50px;
     width: 100%;
