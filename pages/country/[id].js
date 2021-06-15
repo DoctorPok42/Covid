@@ -12,7 +12,6 @@ export default function Post({ covid, lineData }) {
   let chartRef1 = useRef();
   let chartRef2 = useRef();
   let chartRef3 = useRef();
-  let chartRef4 = useRef();
 
   useEffect(() => {
     let chart1 = new Chart(chartRef1.current, {
@@ -129,54 +128,6 @@ export default function Post({ covid, lineData }) {
           title: {
             display: true,
             text: `Recovered`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-    let chart4 = new Chart(chartRef1.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Active",
-            backgroundColor: "#FAE29F",
-            borderColor: "#FAE29F",
-            pointBorderColor: "#FAE29F",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.keys(lineData.timeline.cases).map(
-              (key) =>
-                lineData.timeline.cases[key] -
-                lineData.timeline.recovered[key] -
-                lineData.timeline.deaths[key]
-            ),
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Active`,
             color: "#b9b9b9",
             font: { family: "Nunito", size: 40 },
           },
@@ -353,11 +304,6 @@ export default function Post({ covid, lineData }) {
           <div class="gra">
             <div class="graline">
               <canvas id="myChart" ref={chartRef3} />
-            </div>
-          </div>
-          <div class="gra">
-            <div class="graline">
-              <canvas id="myChart" ref={chartRef4} />
             </div>
           </div>
         </div>
