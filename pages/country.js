@@ -5,10 +5,10 @@ export default function Home({ covids }) {
   return (
     <>
       <Head>
-        <title>Country | Covid-Stats</title>
+        <title>Country | Stats-Covid19</title>
         <meta charset="UTF8" />
         <meta name="theme-color" content="#6495ed" />
-        <meta name="title" content="Covid-Stats" />
+        <meta name="title" content="Stats-Covid19" />
         <meta name="description" content="Site de stats pour la covid19" />
         <meta name="keywords" content="covid, covid19, stats" />
         <meta name="author" content="DoctorPok" />
@@ -20,7 +20,7 @@ export default function Home({ covids }) {
       </Head>
       <main class="container">
         <div class="top">
-          <h1>Covid-Stats</h1>
+          <h1>Stats-Covid19</h1>
 
           <div class="link">
             <Link href={`./`}>
@@ -47,7 +47,15 @@ export default function Home({ covids }) {
         </div>
         <div class="footer">
           <h2>
-            Made by{" "}
+            {" "}
+            &copy;{" "}
+            <a
+              href="https://github.com/DoctorPok42/stats-covid19"
+              target="_blank"
+            >
+              Stats-Covid19
+            </a>{" "}
+            - Made by{" "}
             <a href="https://github.com/DoctorPok42" target="_blank">
               DoctorPok
             </a>
