@@ -372,6 +372,18 @@ span {
       justify-content: center;
       align-items: center;
 
+      #cases {
+        color: #75c0e0;
+      }
+      #deaths {
+        color: #df1c44;
+      }
+      #recovered {
+        color: #39a275;
+      }
+      #active {
+        color: #fae29f;
+      }
       span {
         margin: 0;
       }
@@ -419,6 +431,22 @@ span {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      #cases {
+        color: #75c0e0;
+      }
+      #deaths {
+        color: #df1c44;
+      }
+      #recovered {
+        color: #39a275;
+      }
+      #active {
+        color: #fae29f;
+      }
+      span {
+        margin: 0;
+      }
     }
 
     .gra {
