@@ -12,6 +12,7 @@ export default function Post({ covid, lineData }) {
   let chartRef1 = useRef();
   let chartRef2 = useRef();
   let chartRef3 = useRef();
+  let chartRef4 = useRef();
 
   useEffect(() => {
     let chart1 = new Chart(chartRef1.current, {
@@ -143,14 +144,62 @@ export default function Post({ covid, lineData }) {
         },
       },
     });
+    let chart4 = new Chart(chartRef4.current, {
+      type: "line",
+      data: {
+        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
+          const [month, day, year] = dateString.split("/");
+          return [day, month, year].join("/");
+        }),
+        datasets: [
+          {
+            label: "Active",
+            backgroundColor: "#FAE29F",
+            borderColor: "#FAE29F",
+            pointBorderColor: "#FAE29F",
+            pointRadius: 2.5,
+            borderWidth: 2.5,
+            data: Object.keys(lineData.timeline.cases).map(
+              (key) =>
+                lineData.timeline.cases[key] -
+                lineData.timeline.recovered[key] -
+                lineData.timeline.deaths[key]
+            ),
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+          title: {
+            display: true,
+            text: `Active`,
+            color: "#b9b9b9",
+            font: { family: "Nunito", size: 40 },
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
   }, []);
   return (
     <>
       <Head>
-        <title>{covid.country} | Covid-Stats</title>
+        <title>{covid.country} | Stats-Covid19</title>
         <meta charset="UTF8" />
         <meta name="theme-color" content="#6495ed" />
-        <meta name="title" content={`${covid.country} | Covid-Stats`} />
+        <meta name="title" content={`${covid.country} | Stats-Covid19`} />
         <meta name="description" content="Site de stats pour la covid19" />
         <meta name="keywords" content="covid, covid19, stats" />
         <meta name="author" content="DoctorPok" />
@@ -163,7 +212,7 @@ export default function Post({ covid, lineData }) {
       </Head>
       <main class="container">
         <div class="top">
-          <h1>Covid-Stats</h1>
+          <h1>Stats-Covid19</h1>
 
           <div class="link">
             <Link href={`../`}>
@@ -287,7 +336,10 @@ export default function Post({ covid, lineData }) {
           </div>
           <div id="titlegra">
             <h2>
-              Graph for cases, deaths and recovered for the last 31 days in{" "}
+              Graph for <span id="cases">cases</span>,{" "}
+              <span id="deaths">deaths</span>,{" "}
+              <span id="recovered">recovered</span> and{" "}
+              <span id="active">active</span> for the last 31 days in{" "}
               <span>{covid.country}</span>
             </h2>
           </div>
@@ -306,10 +358,23 @@ export default function Post({ covid, lineData }) {
               <canvas id="myChart" ref={chartRef3} />
             </div>
           </div>
+          <div class="gra">
+            <div class="graline">
+              <canvas id="myChart" ref={chartRef4} />
+            </div>
+          </div>
         </div>
         <div class="footer">
           <h2>
-            Made by{" "}
+            {" "}
+            &copy;{" "}
+            <a
+              href="https://github.com/DoctorPok42/stats-covid19"
+              target="_blank"
+            >
+              Stats-Covid19
+            </a>{" "}
+            - Made by{" "}
             <a href="https://github.com/DoctorPok42" target="_blank">
               DoctorPok
             </a>
