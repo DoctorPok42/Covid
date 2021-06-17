@@ -53,9 +53,9 @@ export default function Home({ covids }) {
               href="https://github.com/DoctorPok42/stats-covid19"
               target="_blank"
             >
-              Stats-Covid19
+              Stats-Covid19 - 2021
             </a>{" "}
-            - Made by{" "}
+            | Made by{" "}
             <a href="https://github.com/DoctorPok42" target="_blank">
               DoctorPok
             </a>
