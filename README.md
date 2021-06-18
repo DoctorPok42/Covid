@@ -20,6 +20,7 @@ Voici son lien : [https://stats-covid19.vercel.app/](https://stats-covid19.verce
 
 ### Accueil
 <img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/index.PNG" />
+<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/index-2.PNG" />
 
 ### Select Country
 <img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/country.PNG" />
