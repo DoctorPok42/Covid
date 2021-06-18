@@ -9,7 +9,7 @@ export default function Error() {
         <meta charset="UTF8" />
         <meta name="theme-color" content="#DF1C44" />
         <meta name="title" content="Stats-Covid19" />
-        <meta name="description" content="Site de stats pour la covid19" />
+        <meta name="description" content="404 Not Found" />
         <meta name="keywords" content="covid, covid19, stats" />
         <meta name="author" content="DoctorPok" />
         <meta name="robots" content="index" />
