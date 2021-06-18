@@ -32,7 +32,7 @@ export default function Error() {
               <a>select country</a>
             </Link>
 
-            <Link href={`./country`}>
+            <Link href={``}>
               <a id="here">404 Not Found</a>
             </Link>
 
