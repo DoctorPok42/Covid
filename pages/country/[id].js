@@ -226,6 +226,10 @@ export default function Post({ covid, lineData }) {
             <Link href={``}>
               <a id="here">country : {covid.country}</a>
             </Link>
+
+            <Link href={`https://discord.gg/5jPMAvfquT`}>
+              <a target="_blank">support</a>
+            </Link>
           </div>
         </div>
 
