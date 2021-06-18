@@ -30,6 +30,10 @@ export default function Home({ covids }) {
             <Link href={``}>
               <a id="here">select country</a>
             </Link>
+
+            <Link href={`https://discord.gg/5jPMAvfquT`}>
+              <a target="_blank">support</a>
+            </Link>
           </div>
         </div>
 
