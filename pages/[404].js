@@ -24,7 +24,7 @@ export default function Error() {
           <h1>Stats-Covid19</h1>
 
           <div class="link">
-            <Link href={``}>
+            <Link href={`/`}>
               <a>all</a>
             </Link>
 
@@ -34,6 +34,10 @@ export default function Error() {
 
             <Link href={`./country`}>
               <a id="here">404 Not Found</a>
+            </Link>
+
+            <Link href={`https://discord.gg/5jPMAvfquT`}>
+              <a target="_blank">support</a>
             </Link>
           </div>
         </div>
