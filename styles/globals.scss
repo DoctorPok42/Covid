@@ -528,3 +528,95 @@ span {
     }
   }
 }
+
+@media only screen and (max-width: 1720px) {
+  .container {
+    .graph {
+      .gra {
+        canvas {
+          max-height: 30vh;
+          max-width: 70vh;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1540px) {
+  .container {
+    .content {
+      h2 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1445px) {
+  .container {
+    .graph {
+      .gra {
+        width: 75%;
+        canvas {
+          max-height: 40vh;
+          max-width: 100vh;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .container {
+    .content {
+      h2 {
+        font-size: 23px;
+      }
+    }
+    .graph {
+      #titlegra {
+        h2 {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  .container {
+    .content {
+      height: 30vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        width: 100%;
+        margin: 0 0;
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .container {
+    .graph {
+      #titlegra {
+        h2 {
+          font-size: 23px;
+        }
+      }
+      .gra {
+        width: 75%;
+        canvas {
+          max-height: 35vh;
+          max-width: 90vh;
+        }
+      }
+    }
+  }
+}
