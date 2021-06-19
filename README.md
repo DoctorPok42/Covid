@@ -14,6 +14,61 @@ Il est en mesure de vous affichez les stats globals du covid ou les stats par pa
 
 Voici son lien : [https://stats-covid19.vercel.app/](https://stats-covid19.vercel.app/)
 
+<details>
+  <summary>🏳️ Referenced Country : :arrow_down:</summary>
+ <br />
+France,
+US,
+United Kingdom,
+China,
+India,
+Japan,
+Canada,
+Germany,
+Spain,
+Russia,
+South Korea,
+Egypt,
+Australia,
+Italy,
+Greece,
+Israel,
+Palestine,
+Liechtenstein,
+Cameroon,
+South Africa,
+Brazil,
+Ireland,
+New Zealand,
+French Polynesia,
+Mexico,
+Seychelles,
+Algeria,
+Tunisia,
+Portugal,
+Denmark,
+Afghanistan,
+Iran,
+Iceland,
+Philippines,
+Thailand,
+Switzerland,
+Tunisia,
+Botswana,
+Mauritius,
+Belgium,
+Bhutan,
+Kuwait,
+Ecuador,
+Namibia,
+Senegal,
+Sweden,
+Norway,
+Finland,
+Netherlands,
+Austria,
+</details>
+
 <hr/>
 
 ## Screens
