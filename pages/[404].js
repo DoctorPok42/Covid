@@ -67,8 +67,11 @@ export default function Error() {
               fill="#DF1C44"
             />
           </svg>
+          <Link href="javascript:history.back()">
+            <a>back</a>
+          </Link>
           <Link href={`/`}>
-            <a>return to home</a>
+            <a>home</a>
           </Link>
         </div>
       </main>
