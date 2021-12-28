@@ -152,7 +152,7 @@ span {
       width: 28vh;
       height: 3vh;
       background-color: #b9b9b9;
-      border-radius: 10px 0 10px;
+      border-radius: 10px 0 10px 0;
       position: absolute;
       right: 0;
       bottom: 0;
@@ -317,7 +317,7 @@ span {
           width: 28vh;
           height: 3vh;
           background-color: #b9b9b9;
-          border-radius: 10px 0 10px;
+          border-radius: 10px 0 10px 0;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -565,7 +565,6 @@ span {
           width: 20%;
           height: 50px;
           border-bottom: 3px solid #2B2B2B;
-          border-radius: 0px;
           font-size: 1.5em;
           font-family: "Nunito";
           display: flex;
@@ -577,7 +576,6 @@ span {
           height: 50px;
           border-bottom: 3px solid #2B2B2B;
           border-left: 3px solid #2B2B2B;
-          border-radius: 0px;
           display: flex;
           justify-content: center;
           align-items: center;
