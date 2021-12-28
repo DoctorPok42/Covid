@@ -215,11 +215,11 @@ export default function Post({ covid, lineData }) {
           <h1>Stats-Covid19</h1>
 
           <div class="link">
-            <Link href={`../`}>
+            <Link href={`/`}>
               <a>all</a>
             </Link>
 
-            <Link href={`../country`}>
+            <Link href={`../../country`}>
               <a>select country</a>
             </Link>
 
@@ -338,6 +338,29 @@ export default function Post({ covid, lineData }) {
               <h3>Updated {moment(covid.updated).fromNow()}</h3>
             </div>
           </div>
+          <div className="btns">
+            <input type="button" id="change" value="Double click to change the display to : Table" onClick={() => {
+                document.getElementById("change").addEventListener("click", () => {
+                  if (document.getElementById("change").value === "Double click to change the display to : Graph") {
+                    document.getElementById("change").value = "Double click to change the display to : Table";
+                    document.getElementById("titlegra").style.display = "flex";
+                    document.getElementById("gra1").style.display = "flex";
+                    document.getElementById("gra2").style.display = "flex";
+                    document.getElementById("gra3").style.display = "flex";
+                    document.getElementById("gra4").style.display = "flex";
+                    document.getElementById("stats").style.display = "none";
+                  } else {
+                    document.getElementById("change").value = "Double click to change the display to : Graph";
+                    document.getElementById("titlegra").style.display = "none";
+                    document.getElementById("gra1").style.display = "none";
+                    document.getElementById("gra2").style.display = "none";
+                    document.getElementById("gra3").style.display = "none";
+                    document.getElementById("gra4").style.display = "none";
+                    document.getElementById("stats").style.display = "flex";
+                  }
+                });
+            }} />
+          </div>
           <div id="titlegra">
             <h2>
               Graph for <span id="cases">cases</span>,{" "}
@@ -347,28 +370,46 @@ export default function Post({ covid, lineData }) {
               <span>{covid.country}</span>
             </h2>
           </div>
-          <div class="gra">
-            <div class="graline">
+           <div className="gra" id="gra1">
+            <div className="graline">
               <canvas id="myChart" ref={chartRef1} />
             </div>
           </div>
-          <div class="gra">
-            <div class="graline">
+          <div className="gra" id="gra2">
+            <div className="graline">
               <canvas id="myChart" ref={chartRef2} />
             </div>
           </div>
-          <div class="gra">
-            <div class="graline">
+          <div className="gra" id="gra3">
+            <div className="graline">
               <canvas id="myChart" ref={chartRef3} />
             </div>
           </div>
-          <div class="gra">
-            <div class="graline">
+          <div className="gra" id="gra4">
+            <div className="graline">
               <canvas id="myChart" ref={chartRef4} />
             </div>
           </div>
+
+          <div className="stats" id="stats" style={{display: 'none'}}>
+            <div className="container">
+                {Object.keys(lineData.timeline.cases).map((dateString) => {
+                  const [month, day, year] = dateString.split("/");
+                  const nomaldate =  [day, month, year].join(" / ");
+                  return <div className="content">
+                  <div className="dates">{nomaldate}</div>
+                    <div className="numbers">
+                      <p>Cases : {lineData.timeline.cases[dateString]} | </p>
+                      <p>Deaths : {lineData.timeline.deaths[dateString]} | </p>
+                      <p>Recovered : {lineData.timeline.recovered[dateString]} | </p>
+                      <p>Active : {(lineData.timeline.cases[dateString] - lineData.timeline.deaths[dateString] - lineData.timeline.recovered[dateString])}</p>
+                    </div>
+                  </div>
+                })}
+            </div>
+          </div>
         </div>
-        <div class="footer">
+        <div className="footer">
           <h2>
             {" "}
             &copy;{" "}
