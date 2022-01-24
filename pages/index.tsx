@@ -266,7 +266,7 @@ export default function Post({ covids, lineData }) {
             <h2>
               Graph for <span id="cases">cases</span>,{" "}
               <span id="deaths">deaths</span>,{" "}
-              <span id="recovered">recovered</span> and{" "}
+              {/* <span id="recovered">recovered</span> and{" "} */}
               <span id="active">active</span> for the last 31 days in the word
             </h2>
           </div>
@@ -280,11 +280,11 @@ export default function Post({ covids, lineData }) {
               <canvas id="myChart" ref={chartRef2} />
             </div>
           </div>
-          <div className="gra">
+          {/* <div className="gra">
             <div className="graline">
               <canvas id="myChart" ref={chartRef3} />
             </div>
-          </div>
+          </div> */}
           <div className="gra">
             <div className="graline">
               <canvas id="myChart" ref={chartRef4} />
