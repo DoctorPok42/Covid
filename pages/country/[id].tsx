@@ -365,7 +365,7 @@ export default function Post({ covid, lineData }) {
             <h2>
               Graph for <span id="cases">cases</span>,{" "}
               <span id="deaths">deaths</span>,{" "}
-              <span id="recovered">recovered</span> and{" "}
+              {/* <span id="recovered">recovered</span> and{" "} */}
               <span id="active">active</span> for the last 31 days in{" "}
               <span>{covid.country}</span>
             </h2>
@@ -380,11 +380,11 @@ export default function Post({ covid, lineData }) {
               <canvas id="myChart" ref={chartRef2} />
             </div>
           </div>
-          <div className="gra" id="gra3">
+          {/* <div className="gra" id="gra3">
             <div className="graline">
               <canvas id="myChart" ref={chartRef3} />
             </div>
-          </div>
+          </div> */}
           <div className="gra" id="gra4">
             <div className="graline">
               <canvas id="myChart" ref={chartRef4} />
@@ -401,7 +401,7 @@ export default function Post({ covid, lineData }) {
                     <div className="numbers">
                       <p>Cases : {lineData.timeline.cases[dateString]} |</p>
                       <p>Deaths : {lineData.timeline.deaths[dateString]} |</p>
-                      <p>Recovered : {lineData.timeline.recovered[dateString]} |</p>
+                      {/* <p>Recovered : {lineData.timeline.recovered[dateString]} |</p> */}
                       <p>Active : {(lineData.timeline.cases[dateString] - lineData.timeline.deaths[dateString] - lineData.timeline.recovered[dateString])}</p>
                     </div>
                   </div>
