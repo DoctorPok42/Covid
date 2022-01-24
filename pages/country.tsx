@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Home({ any: covids }) {
+export default function Home({ covids }) {
   return (
     <>
       <Head>
         <title>Country | Stats-Covid19</title>
-        <meta charSet="UTF8" />
+        <meta charset="UTF8" />
         <meta name="theme-color" content="#6495ed" />
         <meta name="title" content="Stats-Covid19" />
         <meta name="description" content="Site de stats pour la covid19" />
@@ -18,11 +18,11 @@ export default function Home({ any: covids }) {
           content="https://zupimages.net/up/21/22/3e08.png"
         ></meta>
       </Head>
-      <main className="container">
-        <div className="top">
+      <main class="container">
+        <div class="top">
           <h1>Stats-Covid19</h1>
 
-          <div className="link">
+          <div class="link">
             <Link href={`./`}>
               <a>all</a>
             </Link>
@@ -37,11 +37,11 @@ export default function Home({ any: covids }) {
           </div>
         </div>
 
-        <div className="content2">
+        <div class="content2">
           {covids.map((covid) => (
             <Link href={`./country/${covid.country}`}>
               <a>
-                <div className="box">
+                <div class="box">
                   <h2>{covid.country}</h2>
                   <img src={covid.countryInfo.flag} />
                 </div>
@@ -49,7 +49,7 @@ export default function Home({ any: covids }) {
             </Link>
           ))}
         </div>
-        <div className="footer">
+        <div class="footer">
           <h2>
             {" "}
             &copy;{" "}
