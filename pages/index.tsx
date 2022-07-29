@@ -5,8 +5,9 @@ import { Chart } from "react-chartjs-2";
 const api = require("novelcovid");
 const moment = require("moment");
 
-export default function Post({ covids, lineData }) {
-  function form(nb) {
+export default function Post(props: any) {
+  const { covids, lineData } = props;
+  function form(nb: any) {
     return new Intl.NumberFormat("de-DE").format(nb);
   }
 
@@ -49,13 +50,13 @@ export default function Post({ covids, lineData }) {
           },
         },
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+          // yAxes: [
+          //   {
+          //     ticks: {
+          //       beginAtZero: true,
+          //     },
+          //   },
+          // ],
         },
       },
     });
@@ -92,59 +93,59 @@ export default function Post({ covids, lineData }) {
           },
         },
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+          // yAxes: [
+          //   {
+          //     ticks: {
+          //       beginAtZero: true,
+          //     },
+          //   },
+          // ],
         },
       },
     });
-    let chart3 = new Chart(chartRef3.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Recovered",
-            backgroundColor: "#39A275",
-            borderColor: "#39A275",
-            pointBorderColor: "#39A275",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.values(lineData.timeline.recovered),
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Recovered`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
+    // let chart3 = new Chart(chartRef3.current, {
+    //   type: "line",
+    //   data: {
+    //     labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
+    //       const [month, day, year] = dateString.split("/");
+    //       return [day, month, year].join("/");
+    //     }),
+    //     datasets: [
+    //       {
+    //         label: "Recovered",
+    //         backgroundColor: "#39A275",
+    //         borderColor: "#39A275",
+    //         pointBorderColor: "#39A275",
+    //         pointRadius: 2.5,
+    //         borderWidth: 2.5,
+    //         data: Object.values(lineData.timeline.recovered),
+    //       },
+    //     ],
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: "bottom",
+    //       },
+    //       title: {
+    //         display: true,
+    //         text: `Recovered`,
+    //         color: "#b9b9b9",
+    //         font: { family: "Nunito", size: 40 },
+    //       },
+    //     },
+    //     scales: {
+    //       // yAxes: [
+    //       //   {
+    //       //     ticks: {
+    //       //       beginAtZero: true,
+    //       //     },
+    //       //   },
+    //       // ],
+    //     },
+    //   },
+    // });
     let chart4 = new Chart(chartRef4.current, {
       type: "line",
       data: {
@@ -183,13 +184,13 @@ export default function Post({ covids, lineData }) {
           },
         },
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+          // yAxes: [
+          //   {
+          //     ticks: {
+          //       beginAtZero: true,
+          //     },
+          //   },
+          // ],
         },
       },
     });
@@ -225,7 +226,7 @@ export default function Post({ covids, lineData }) {
             </Link>
 
             <Link href={`https://discord.gg/5jPMAvfquT`}>
-              <a target="_blank">support</a>
+              <a>support</a>
             </Link>
           </div>
         </div>
@@ -295,16 +296,11 @@ export default function Post({ covids, lineData }) {
           <h2>
             {" "}
             &copy;{" "}
-            <a
-              href="https://github.com/DoctorPok42/stats-covid19"
-              target="_blank"
-            >
+            <a href="https://github.com/DoctorPok42/stats-covid19">
               Stats-Covid19
             </a>{" "}
             - 2021 | Made by{" "}
-            <a href="https://github.com/DoctorPok42" target="_blank">
-              DoctorPok
-            </a>
+            <a href="https://github.com/DoctorPok42">DoctorPok</a>
           </h2>
         </div>
       </main>

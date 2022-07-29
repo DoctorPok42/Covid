@@ -1,33 +1,30 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 import { Chart } from "react-chartjs-2";
 const api = require("novelcovid");
 const moment = require("moment");
 
-export default function Post({ covid, lineData }) {
-  function form(nb) {
+export default function Post(props: any) {
+  const { covid, lineData } = props;
+  function form(nb: any) {
     return new Intl.NumberFormat("de-DE").format(nb);
   }
 
-  function test() {
-    Array.forEach(element => {
-      let upper = element.toUpperCase();
-      document.getElementById("change").addEventListener("click", () => {
-        if (document.getElementById("change").value === "Double click to change the display to : Graph") {
-          document.getElementById("change").value = "Double click to change the display to : Table";
-          document.getElementById("titlegra").style.display = "flex";
-          document.getElementById("gra"+upper).style.display = "flex";
-          document.getElementById("stats").style.display = "none";
-        } else {
-          document.getElementById("change").value = "Double click to change the display to : Graph";
-          document.getElementById("titlegra").style.display = "none";
-          document.getElementById("gra"+upper).style.display = "none";
-          document.getElementById("stats").style.display = "flex";
-        }
-      });
-  });
-  }
+  const [table, setTable] = useState<boolean>(false);
+  const [nameTable, setNameTable] = useState<string>(
+    "Click to change the display to : Graph"
+  );
+
+  const onPress = () => {
+    setTable(!table);
+    setNameTable(
+      table
+        ? "Click to change the display to : Graph"
+        : "Click to change the display to : Table"
+    );
+  };
 
   let chartRef1 = useRef();
   let chartRef2 = useRef();
@@ -67,15 +64,15 @@ export default function Post({ covid, lineData }) {
             font: { family: "Nunito", size: 40 },
           },
         },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
+        // scales: {
+        //   yAxes: [
+        //     {
+        //       ticks: {
+        //         beginAtZero: true,
+        //       },
+        //     },
+        //   ],
+        // },
       },
     });
     let chart2 = new Chart(chartRef2.current, {
@@ -111,13 +108,13 @@ export default function Post({ covid, lineData }) {
           },
         },
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+          // yAxes: [
+          //   {
+          //     ticks: {
+          //       beginAtZero: true,
+          //     },
+          //   },
+          // ],
         },
       },
     });
@@ -153,15 +150,15 @@ export default function Post({ covid, lineData }) {
             font: { family: "Nunito", size: 40 },
           },
         },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
+        // scales: {
+        //   yAxes: [
+        //     {
+        //       ticks: {
+        //         beginAtZero: true,
+        //       },
+        //     },
+        //   ],
+        // },
       },
     });
     let chart4 = new Chart(chartRef4.current, {
@@ -201,15 +198,15 @@ export default function Post({ covid, lineData }) {
             font: { family: "Nunito", size: 40 },
           },
         },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
+        // scales: {
+        //   yAxes: [
+        //     {
+        //       ticks: {
+        //         beginAtZero: true,
+        //       },
+        //     },
+        //   ],
+        // },
       },
     });
   }, []);
@@ -217,7 +214,7 @@ export default function Post({ covid, lineData }) {
     <>
       <Head>
         <title>{covid.country} | Stats-Covid19</title>
-        <meta charset="UTF8" />
+        <meta charSet="UTF8" />
         <meta name="theme-color" content="#6495ed" />
         <meta name="title" content={`${covid.country} | Stats-Covid19`} />
         <meta name="description" content="Site de stats pour la covid19" />
@@ -228,7 +225,7 @@ export default function Post({ covid, lineData }) {
           property="og:image"
           content="https://zupimages.net/up/21/22/3e08.png"
         ></meta>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <Script src="https://cdn.jsdelivr.net/npm/chart.js"></Script>
       </Head>
       <main className="container">
         <div className="top">
@@ -248,7 +245,7 @@ export default function Post({ covid, lineData }) {
             </Link>
 
             <Link href={`https://discord.gg/5jPMAvfquT`}>
-              <a target="_blank">support</a>
+              <a>support</a>
             </Link>
           </div>
         </div>
@@ -359,9 +356,17 @@ export default function Post({ covid, lineData }) {
             </div>
           </div>
           <div className="btns">
-            <input type="button" id="change" value="Double click to change the display to : Table" onClick={test()} />
+            <input
+              type="button"
+              id="change"
+              value={nameTable}
+              onClick={() => onPress()}
+            />
           </div>
-          <div id="titlegra">
+          <div
+            id="titlegra"
+            style={table ? { display: "none" } : { display: "flex" }}
+          >
             <h2>
               Graph for <span id="cases">cases</span>,{" "}
               <span id="deaths">deaths</span>,{" "}
@@ -370,12 +375,18 @@ export default function Post({ covid, lineData }) {
               <span>{covid.country}</span>
             </h2>
           </div>
-           <div className="gra" id="gra1">
+          <div
+            className="gra"
+            style={table ? { display: "none" } : { display: "flex" }}
+          >
             <div className="graline">
               <canvas id="myChart" ref={chartRef1} />
             </div>
           </div>
-          <div className="gra" id="gra2">
+          <div
+            className="gra"
+            style={table ? { display: "none" } : { display: "flex" }}
+          >
             <div className="graline">
               <canvas id="myChart" ref={chartRef2} />
             </div>
@@ -385,27 +396,41 @@ export default function Post({ covid, lineData }) {
               <canvas id="myChart" ref={chartRef3} />
             </div>
           </div> */}
-          <div className="gra" id="gra4">
+          <div
+            className="gra"
+            style={table ? { display: "none" } : { display: "flex" }}
+          >
             <div className="graline">
               <canvas id="myChart" ref={chartRef4} />
             </div>
           </div>
 
-          <div className="stats" id="stats" style={{display: 'none'}}>
+          <div
+            className="stats"
+            id="stats"
+            style={table ? { display: "flex" } : { display: "none" }}
+          >
             <div className="container">
-                {Object.keys(lineData.timeline.cases).map((dateString) => {
-                  const [month, day, year] = dateString.split("/");
-                  const nomaldate =  [day, month, year].join(" / ");
-                  return <div className="content">
-                  <div className="dates">{nomaldate}</div>
+              {Object.keys(lineData.timeline.cases).map((dateString) => {
+                const [month, day, year] = dateString.split("/");
+                const nomaldate = [day, month, year].join(" / ");
+                return (
+                  <div className="content">
+                    <div className="dates">{nomaldate}</div>
                     <div className="numbers">
                       <p>Cases : {lineData.timeline.cases[dateString]} |</p>
                       <p>Deaths : {lineData.timeline.deaths[dateString]} |</p>
                       {/* <p>Recovered : {lineData.timeline.recovered[dateString]} |</p> */}
-                      <p>Active : {(lineData.timeline.cases[dateString] - lineData.timeline.deaths[dateString] - lineData.timeline.recovered[dateString])}</p>
+                      <p>
+                        Active :{" "}
+                        {lineData.timeline.cases[dateString] -
+                          lineData.timeline.deaths[dateString] -
+                          lineData.timeline.recovered[dateString]}
+                      </p>
                     </div>
                   </div>
-                })}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -413,16 +438,11 @@ export default function Post({ covid, lineData }) {
           <h2>
             {" "}
             &copy;{" "}
-            <a
-              href="https://github.com/DoctorPok42/stats-covid19"
-              target="_blank"
-            >
+            <a href="https://github.com/DoctorPok42/stats-covid19">
               Stats-Covid19
             </a>{" "}
             - 2021 | Made by{" "}
-            <a href="https://github.com/DoctorPok42" target="_blank">
-              DoctorPok
-            </a>
+            <a href="https://github.com/DoctorPok42">DoctorPok</a>
           </h2>
         </div>
       </main>
@@ -430,13 +450,13 @@ export default function Post({ covid, lineData }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  const lineData = ["global", "all"].includes(params.id.toLowerCase())
+export async function getServerSideProps(ctx: any) {
+  const lineData = ["global", "all"].includes(ctx.params.id.toLowerCase())
     ? { timeline: await api.historical.all({ days: 31 }) }
-    : await api.historical.countries({ country: params.id, days: 31 });
+    : await api.historical.countries({ country: ctx.params.id, days: 31 });
 
   const covid = await fetch(
-    `https://disease.sh/v3/covid-19/countries/${params.id}?yesterday=true&twoDaysAgo=true&strict=true&allowNull=true`
+    `https://disease.sh/v3/covid-19/countries/${ctx.params.id}?yesterday=true&twoDaysAgo=true&strict=true&allowNull=true`
   ).then((r) => r.json());
   return {
     props: {

@@ -1,12 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Home({ covids }) {
+export default function Home(props: any) {
+  const { covids } = props;
   return (
     <>
       <Head>
         <title>Country | Stats-Covid19</title>
-        <meta charset="UTF8" />
+        <meta charSet="UTF8" />
         <meta name="theme-color" content="#6495ed" />
         <meta name="title" content="Stats-Covid19" />
         <meta name="description" content="Site de stats pour la covid19" />
@@ -18,11 +19,11 @@ export default function Home({ covids }) {
           content="https://zupimages.net/up/21/22/3e08.png"
         ></meta>
       </Head>
-      <main class="container">
-        <div class="top">
+      <main className="container">
+        <div className="top">
           <h1>Stats-Covid19</h1>
 
-          <div class="link">
+          <div className="link">
             <Link href={`./`}>
               <a>all</a>
             </Link>
@@ -32,16 +33,16 @@ export default function Home({ covids }) {
             </Link>
 
             <Link href={`https://discord.gg/5jPMAvfquT`}>
-              <a target="_blank">support</a>
+              <a>support</a>
             </Link>
           </div>
         </div>
 
-        <div class="content2">
-          {covids.map((covid) => (
+        <div className="content2">
+          {covids.map((covid: any) => (
             <Link href={`./country/${covid.country}`}>
               <a>
-                <div class="box">
+                <div className="box">
                   <h2>{covid.country}</h2>
                   <img src={covid.countryInfo.flag} />
                 </div>
@@ -49,20 +50,15 @@ export default function Home({ covids }) {
             </Link>
           ))}
         </div>
-        <div class="footer">
+        <div className="footer">
           <h2>
             {" "}
             &copy;{" "}
-            <a
-              href="https://github.com/DoctorPok42/stats-covid19"
-              target="_blank"
-            >
+            <a href="https://github.com/DoctorPok42/stats-covid19">
               Stats-Covid19
             </a>{" "}
             - 2021 | Made by{" "}
-            <a href="https://github.com/DoctorPok42" target="_blank">
-              DoctorPok
-            </a>
+            <a href="https://github.com/DoctorPok42">DoctorPok</a>
           </h2>
         </div>
       </main>
