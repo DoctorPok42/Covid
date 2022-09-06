@@ -6,7 +6,7 @@ export default function Error() {
     <>
       <Head>
         <title>404 Not Found</title>
-        <meta charSet="UTF8" />
+        <meta charset="UTF8" />
         <meta name="theme-color" content="#DF1C44" />
         <meta name="title" content="Stats-Covid19" />
         <meta name="description" content="404 Not Found" />
@@ -19,11 +19,11 @@ export default function Error() {
         ></meta>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </Head>
-      <main className="container">
-        <div className="top">
+      <main class="container">
+        <div class="top">
           <h1>Stats-Covid19</h1>
 
-          <div className="link">
+          <div class="link">
             <Link href={`/`}>
               <a>all</a>
             </Link>
@@ -41,7 +41,7 @@ export default function Error() {
             </Link>
           </div>
         </div>
-        <div className="content4">
+        <div class="content4">
           <svg
             width="490"
             height="143"
