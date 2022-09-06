@@ -12,7 +12,7 @@ Il est en mesure de vous affichez les stats globals du covid ou les stats par pa
 
 <hr />
 
-Voici son lien : [https://covid.doctorpok.io/](https://covid.doctorpok.io/)
+Voici son lien : [https://covid.doctorpok.io](https://covid.doctorpok.io)
 
 <details>
   <summary>🏳️ Referenced Country : :arrow_down:</summary>
