@@ -540,7 +540,6 @@ span {
     justify-content: center;
     align-items: center;
     padding-top: 50px;
-    
 
     .container {
       width: 1000px;
@@ -552,7 +551,6 @@ span {
       margin: 25px;
       padding: 25px 10px;
       color: #4385ff;
-      
 
       .content {
         width: 100%;
@@ -560,11 +558,11 @@ span {
         margin: 50px 0;
         background: none;
         margin: 0;
-      
+
         .dates {
           width: 20%;
           height: 50px;
-          border-bottom: 3px solid #2B2B2B;
+          border-bottom: 3px solid #2b2b2b;
           font-size: 1.5em;
           font-family: "Nunito";
           display: flex;
@@ -574,8 +572,8 @@ span {
         .numbers {
           width: 80%;
           height: 50px;
-          border-bottom: 3px solid #2B2B2B;
-          border-left: 3px solid #2B2B2B;
+          border-bottom: 3px solid #2b2b2b;
+          border-left: 3px solid #2b2b2b;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -584,22 +582,17 @@ span {
             margin: 0 5px;
             font-size: 1.3em;
             font-family: "Nunito";
-            
           }
           p:nth-child(2) {
             color: #df1c44;
           }
           p:nth-child(3) {
-            color: #39a275;
-          }
-          p:nth-child(4) {
             color: #fae29f;
           }
         }
       }
     }
   }
-
 
   .footer {
     margin-top: 50px;

@@ -101,49 +101,49 @@ export default function Post({ covid, lineData }) {
         },
       },
     });
-    let chart3 = new Chart(chartRef3.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Recovered",
-            backgroundColor: "#39A275",
-            borderColor: "#39A275",
-            pointBorderColor: "#39A275",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.values(lineData.timeline.recovered),
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Recovered`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
+    // let chart3 = new Chart(chartRef3.current, {
+    //   type: "line",
+    //   data: {
+    //     labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
+    //       const [month, day, year] = dateString.split("/");
+    //       return [day, month, year].join("/");
+    //     }),
+    //     datasets: [
+    //       {
+    //         label: "Recovered",
+    //         backgroundColor: "#39A275",
+    //         borderColor: "#39A275",
+    //         pointBorderColor: "#39A275",
+    //         pointRadius: 2.5,
+    //         borderWidth: 2.5,
+    //         data: Object.values(lineData.timeline.recovered),
+    //       },
+    //     ],
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: "bottom",
+    //       },
+    //       title: {
+    //         display: true,
+    //         text: `Recovered`,
+    //         color: "#b9b9b9",
+    //         font: { family: "Nunito", size: 40 },
+    //       },
+    //     },
+    //     scales: {
+    //       yAxes: [
+    //         {
+    //           ticks: {
+    //             beginAtZero: true,
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   },
+    // });
     let chart4 = new Chart(chartRef4.current, {
       type: "line",
       data: {
@@ -339,27 +339,41 @@ export default function Post({ covid, lineData }) {
             </div>
           </div>
           <div className="btns">
-            <input type="button" id="change" value="Double click to change the display to : Table" onClick={() => {
-                document.getElementById("change").addEventListener("click", () => {
-                  if (document.getElementById("change").value === "Double click to change the display to : Graph") {
-                    document.getElementById("change").value = "Double click to change the display to : Table";
-                    document.getElementById("titlegra").style.display = "flex";
-                    document.getElementById("gra1").style.display = "flex";
-                    document.getElementById("gra2").style.display = "flex";
-                    document.getElementById("gra3").style.display = "flex";
-                    document.getElementById("gra4").style.display = "flex";
-                    document.getElementById("stats").style.display = "none";
-                  } else {
-                    document.getElementById("change").value = "Double click to change the display to : Graph";
-                    document.getElementById("titlegra").style.display = "none";
-                    document.getElementById("gra1").style.display = "none";
-                    document.getElementById("gra2").style.display = "none";
-                    document.getElementById("gra3").style.display = "none";
-                    document.getElementById("gra4").style.display = "none";
-                    document.getElementById("stats").style.display = "flex";
-                  }
-                });
-            }} />
+            <input
+              type="button"
+              id="change"
+              value="Double click to change the display to : Table"
+              onClick={() => {
+                document
+                  .getElementById("change")
+                  .addEventListener("click", () => {
+                    if (
+                      document.getElementById("change").value ===
+                      "Double click to change the display to : Graph"
+                    ) {
+                      document.getElementById("change").value =
+                        "Double click to change the display to : Table";
+                      document.getElementById("titlegra").style.display =
+                        "flex";
+                      document.getElementById("gra1").style.display = "flex";
+                      document.getElementById("gra2").style.display = "flex";
+                      // document.getElementById("gra3").style.display = "flex";
+                      document.getElementById("gra4").style.display = "flex";
+                      document.getElementById("stats").style.display = "none";
+                    } else {
+                      document.getElementById("change").value =
+                        "Double click to change the display to : Graph";
+                      document.getElementById("titlegra").style.display =
+                        "none";
+                      document.getElementById("gra1").style.display = "none";
+                      document.getElementById("gra2").style.display = "none";
+                      // document.getElementById("gra3").style.display = "none";
+                      document.getElementById("gra4").style.display = "none";
+                      document.getElementById("stats").style.display = "flex";
+                    }
+                  });
+              }}
+            />
           </div>
           <div id="titlegra">
             <h2>
@@ -370,7 +384,7 @@ export default function Post({ covid, lineData }) {
               <span>{covid.country}</span>
             </h2>
           </div>
-           <div className="gra" id="gra1">
+          <div className="gra" id="gra1">
             <div className="graline">
               <canvas id="myChart" ref={chartRef1} />
             </div>
@@ -380,32 +394,41 @@ export default function Post({ covid, lineData }) {
               <canvas id="myChart" ref={chartRef2} />
             </div>
           </div>
-          <div className="gra" id="gra3">
+          {/* <div className="gra" id="gra3">
             <div className="graline">
               <canvas id="myChart" ref={chartRef3} />
             </div>
-          </div>
+          </div> */}
           <div className="gra" id="gra4">
             <div className="graline">
               <canvas id="myChart" ref={chartRef4} />
             </div>
           </div>
 
-          <div className="stats" id="stats" style={{display: 'none'}}>
+          <div className="stats" id="stats" style={{ display: "none" }}>
             <div className="container">
-                {Object.keys(lineData.timeline.cases).map((dateString) => {
-                  const [month, day, year] = dateString.split("/");
-                  const nomaldate =  [day, month, year].join(" / ");
-                  return <div className="content">
-                  <div className="dates">{nomaldate}</div>
+              {Object.keys(lineData.timeline.cases).map((dateString) => {
+                const [month, day, year] = dateString.split("/");
+                const nomaldate = [day, month, year].join(" / ");
+                return (
+                  <div className="content">
+                    <div className="dates">{nomaldate}</div>
                     <div className="numbers">
                       <p>Cases : {lineData.timeline.cases[dateString]} | </p>
                       <p>Deaths : {lineData.timeline.deaths[dateString]} | </p>
-                      <p>Recovered : {lineData.timeline.recovered[dateString]} | </p>
-                      <p>Active : {(lineData.timeline.cases[dateString] - lineData.timeline.deaths[dateString] - lineData.timeline.recovered[dateString])}</p>
+                      {/* <p>
+                        Recovered : {lineData.timeline.recovered[dateString]} |{" "}
+                      </p> */}
+                      <p>
+                        Active :{" "}
+                        {lineData.timeline.cases[dateString] -
+                          lineData.timeline.deaths[dateString] -
+                          lineData.timeline.recovered[dateString]}
+                      </p>
                     </div>
                   </div>
-                })}
+                );
+              })}
             </div>
           </div>
         </div>

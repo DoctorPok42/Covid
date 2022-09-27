@@ -101,49 +101,49 @@ export default function Post({ covids, lineData }) {
         },
       },
     });
-    let chart3 = new Chart(chartRef3.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Recovered",
-            backgroundColor: "#39A275",
-            borderColor: "#39A275",
-            pointBorderColor: "#39A275",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.values(lineData.timeline.recovered),
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Recovered`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
+    // let chart3 = new Chart(chartRef3.current, {
+    //   type: "line",
+    //   data: {
+    //     labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
+    //       const [month, day, year] = dateString.split("/");
+    //       return [day, month, year].join("/");
+    //     }),
+    //     datasets: [
+    //       {
+    //         label: "Recovered",
+    //         backgroundColor: "#39A275",
+    //         borderColor: "#39A275",
+    //         pointBorderColor: "#39A275",
+    //         pointRadius: 2.5,
+    //         borderWidth: 2.5,
+    //         data: Object.values(lineData.timeline.recovered),
+    //       },
+    //     ],
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     plugins: {
+    //       legend: {
+    //         position: "bottom",
+    //       },
+    //       title: {
+    //         display: true,
+    //         text: `Recovered`,
+    //         color: "#b9b9b9",
+    //         font: { family: "Nunito", size: 40 },
+    //       },
+    //     },
+    //     scales: {
+    //       yAxes: [
+    //         {
+    //           ticks: {
+    //             beginAtZero: true,
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   },
+    // });
     let chart4 = new Chart(chartRef4.current, {
       type: "line",
       data: {
@@ -279,11 +279,11 @@ export default function Post({ covids, lineData }) {
               <canvas id="myChart" ref={chartRef2} />
             </div>
           </div>
-          <div class="gra">
+          {/* <div class="gra">
             <div class="graline">
               <canvas id="myChart" ref={chartRef3} />
             </div>
-          </div>
+          </div> */}
           <div class="gra">
             <div class="graline">
               <canvas id="myChart" ref={chartRef4} />
