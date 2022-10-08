@@ -69,18 +69,3 @@ Netherlands,
 Austria,
 </details>
 
-<hr/>
-
-## Screens
-
-### Accueil
-<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/index.PNG" />
-<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/index-2.PNG" />
-
-### Select Country
-<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/country.PNG" />
-
-### Country : 
-<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/selected-country.PNG" />
-<img src="https://github.com/DoctorPok42/stats-covid19/blob/main/public/graph.PNG" />
-
