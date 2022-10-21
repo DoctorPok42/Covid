@@ -2,7 +2,7 @@
   <img src="https://github.com/DoctorPok42/Covid-Bot/blob/main/assets/logo.png" />
 </div>
 
-# Stats-Covid19 [![CodeFactor](https://www.codefactor.io/repository/github/doctorpok42/stats-covid19/badge)](https://www.codefactor.io/repository/github/doctorpok42/stats-covid19)
+# Covid [![CodeFactor](https://www.codefactor.io/repository/github/doctorpok42/covid/badge)](https://www.codefactor.io/repository/github/doctorpok42/covid)
 
 C'est un site qui récupère les information total du covid pour les afficher sur différentes pages.
 
