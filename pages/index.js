@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Head from "next/head";
 import Link from "next/link";
 const api = require("novelcovid");
@@ -9,190 +11,185 @@ export default function Post({ covids, lineData }) {
     return new Intl.NumberFormat("de-DE").format(nb);
   }
 
-  let chartRef1 = useRef();
-  let chartRef2 = useRef();
-  let chartRef3 = useRef();
-  let chartRef4 = useRef();
+  const [dataSample1, setDataSample1] = useState({
+    options: {
+      chart: {
+        id: "chart1",
+        group: "social",
+        toolbar: {
+          show: true,
+        },
+        zoom: {
+          enabled: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      colors: ["#17ead9"],
+    },
+    series: [
+      {
+        name: "Cases",
+        data: Object.values(lineData.timeline.cases),
+      },
+    ],
+    grid: {
+      row: {
+        colors: ["#1b213b", "transparent"],
+        opacity: 0,
+      },
+    },
+    xaxis: {
+      type: "numeric",
+    },
+    yaxis: {
+      max: 100,
+      align: "right",
+    },
+    title: {
+      text: "Cases",
+      align: "left",
+      style: {
+        fontSize: "20px",
+        color: "#fff",
+      },
+    },
+    labels: ["Cases"],
+    legend: {
+      show: true,
+      floating: true,
+      horizontalAlign: "left",
+      onItemClick: {
+        toggleDataSeries: true,
+      },
+      position: "top",
+      offsetY: 0,
+      offsetX: 60,
+    },
+  });
 
-  useEffect(() => {
-    let chart1 = new Chart(chartRef1.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Cases",
-            backgroundColor: "#75C0E0",
-            borderColor: "#75C0E0",
-            pointBorderColor: "#75C0E0",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.values(lineData.timeline.cases),
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Cases`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
+  const [dataSample2, setDataSample2] = useState({
+    options: {
+      chart: {
+        id: "chart2",
+        group: "social",
+        toolbar: {
+          show: true,
         },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+        zoom: {
+          enabled: false,
         },
       },
-    });
-    let chart2 = new Chart(chartRef2.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.deaths).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Deaths",
-            backgroundColor: "#DF1C44",
-            borderColor: "#DF1C44",
-            pointBorderColor: "#DF1C44",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.values(lineData.timeline.deaths),
-          },
-        ],
+      dataLabels: {
+        enabled: false,
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Deaths`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
+      colors: ["#f02fc2"],
+    },
+    series: [
+      {
+        name: "Deaths",
+        data: Object.values(lineData.timeline.deaths),
       },
-    });
-    // let chart3 = new Chart(chartRef3.current, {
-    //   type: "line",
-    //   data: {
-    //     labels: Object.keys(lineData.timeline.recovered).map((dateString) => {
-    //       const [month, day, year] = dateString.split("/");
-    //       return [day, month, year].join("/");
-    //     }),
-    //     datasets: [
-    //       {
-    //         label: "Recovered",
-    //         backgroundColor: "#39A275",
-    //         borderColor: "#39A275",
-    //         pointBorderColor: "#39A275",
-    //         pointRadius: 2.5,
-    //         borderWidth: 2.5,
-    //         data: Object.values(lineData.timeline.recovered),
-    //       },
-    //     ],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     plugins: {
-    //       legend: {
-    //         position: "bottom",
-    //       },
-    //       title: {
-    //         display: true,
-    //         text: `Recovered`,
-    //         color: "#b9b9b9",
-    //         font: { family: "Nunito", size: 40 },
-    //       },
-    //     },
-    //     scales: {
-    //       yAxes: [
-    //         {
-    //           ticks: {
-    //             beginAtZero: true,
-    //           },
-    //         },
-    //       ],
-    //     },
-    //   },
-    // });
-    let chart4 = new Chart(chartRef4.current, {
-      type: "line",
-      data: {
-        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
-          const [month, day, year] = dateString.split("/");
-          return [day, month, year].join("/");
-        }),
-        datasets: [
-          {
-            label: "Active",
-            backgroundColor: "#FAE29F",
-            borderColor: "#FAE29F",
-            pointBorderColor: "#FAE29F",
-            pointRadius: 2.5,
-            borderWidth: 2.5,
-            data: Object.keys(lineData.timeline.cases).map(
-              (key) =>
-                lineData.timeline.cases[key] -
-                lineData.timeline.recovered[key] -
-                lineData.timeline.deaths[key]
-            ),
-          },
-        ],
+    ],
+    grid: {
+      row: {
+        colors: ["#1b213b", "transparent"],
+        opacity: 0,
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-          },
-          title: {
-            display: true,
-            text: `Active`,
-            color: "#b9b9b9",
-            font: { family: "Nunito", size: 40 },
-          },
+    },
+    xaxis: {
+      type: "numeric",
+    },
+    yaxis: {
+      max: 100,
+      align: "right",
+    },
+    title: {
+      text: "Deaths",
+      align: "left",
+      style: {
+        fontSize: "20px",
+        color: "#fff",
+      },
+    },
+    labels: ["Deaths"],
+    legend: {
+      show: true,
+      floating: true,
+      horizontalAlign: "left",
+      onItemClick: {
+        toggleDataSeries: true,
+      },
+      position: "top",
+      offsetY: 0,
+      offsetX: 60,
+    },
+  });
+
+  const [dataSample3, setDataSample3] = useState({
+    options: {
+      chart: {
+        id: "chart3",
+        group: "social",
+        toolbar: {
+          show: true,
         },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
+        zoom: {
+          enabled: false,
         },
       },
-    });
-  }, []);
+      dataLabels: {
+        enabled: false,
+      },
+      colors: ["#fccf31"],
+    },
+    series: [
+      {
+        name: "Deaths",
+        data: Object.keys(lineData.timeline.cases).map(
+          (key) =>
+            lineData.timeline.cases[key] -
+            lineData.timeline.recovered[key] -
+            lineData.timeline.deaths[key]
+        ),
+      },
+    ],
+    grid: {
+      row: {
+        colors: ["#1b213b", "transparent"],
+        opacity: 0,
+      },
+    },
+    xaxis: {
+      type: "numeric",
+    },
+    yaxis: {
+      max: 100,
+      align: "right",
+    },
+    title: {
+      text: "Deaths",
+      align: "left",
+      style: {
+        fontSize: "20px",
+        color: "#fff",
+      },
+    },
+    labels: ["Deaths"],
+    legend: {
+      show: true,
+      floating: true,
+      horizontalAlign: "left",
+      onItemClick: {
+        toggleDataSeries: true,
+      },
+      position: "top",
+      offsetY: 0,
+      offsetX: 60,
+    },
+  });
+
   return (
     <>
       <Head>
@@ -212,8 +209,6 @@ export default function Post({ covids, lineData }) {
       </Head>
       <main class="container">
         <div class="top">
-          <h1>Stats-Covid19</h1>
-
           <div class="link">
             <Link href={``}>
               <a id="here">all</a>
@@ -261,49 +256,48 @@ export default function Post({ covids, lineData }) {
           <h3>Updated {moment(covids.updated).fromNow()}</h3>
         </div>
         <div class="graph">
-          <div id="titlegra">
+          <div
+            id="titlegra"
+            style={{
+              marginLeft: "300px",
+              width: "60%",
+            }}
+          >
             <h2>
               Graph for <span id="cases">cases</span>,{" "}
-              <span id="deaths">deaths</span>,{" "}
-              <span id="recovered">recovered</span> and{" "}
+              <span id="deaths">deaths</span>, and{" "}
               <span id="active">active</span> for the last 31 days in the word
+              {/* <span id="recovered">recovered</span> */}
             </h2>
           </div>
-          <div class="gra">
-            <div class="graline">
-              <canvas id="myChart" ref={chartRef1} />
-            </div>
-          </div>
-          <div class="gra">
-            <div class="graline">
-              <canvas id="myChart" ref={chartRef2} />
-            </div>
-          </div>
-          {/* <div class="gra">
-            <div class="graline">
-              <canvas id="myChart" ref={chartRef3} />
-            </div>
-          </div> */}
-          <div class="gra">
-            <div class="graline">
-              <canvas id="myChart" ref={chartRef4} />
-            </div>
-          </div>
         </div>
+        <div className="charts">
+          <Chart
+            options={dataSample1.options}
+            series={dataSample1.series}
+            type="area"
+            width="220%"
+            height={250}
+          />
+          <Chart
+            options={dataSample2.options}
+            series={dataSample2.series}
+            type="area"
+            width="220%"
+            height={250}
+          />
+          <Chart
+            options={dataSample3.options}
+            series={dataSample3.series}
+            type="area"
+            width="220%"
+            height={250}
+          />
+        </div>
+
         <div class="footer">
           <h2>
-            {" "}
-            &copy;{" "}
-            <a
-              href="https://github.com/DoctorPok42/stats-covid19"
-              target="_blank"
-            >
-              Stats-Covid19
-            </a>{" "}
-            - 2021 | Made by{" "}
-            <a href="https://github.com/DoctorPok42" target="_blank">
-              DoctorPok
-            </a>
+            Made with <span>❤</span> by DoctorPok
           </h2>
         </div>
       </main>
