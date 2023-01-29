@@ -209,6 +209,7 @@ export default function Post({ covids, lineData }) {
       </Head>
       <main class="container">
         <div class="top">
+          <h1>Stats-Covid19</h1>
           <div class="link">
             <Link href={``}>
               <a id="here">all</a>
