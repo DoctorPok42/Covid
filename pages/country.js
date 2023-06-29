@@ -1,7 +1,22 @@
 import Head from "next/head";
 import Link from "next/link";
+import world from "../lib/world";
 
 export default function Home({ covids }) {
+  const scaleShade = [
+    "#e76161",
+    "#F99B7D",
+    "#FFEEBB",
+    "#609966",
+    "#C0DEFF",
+    "#8D9EFF",
+    "#4942E4",
+    "#FFB2F5",
+    "#D4ADFC",
+    "#9384D1",
+    "#ffffff"
+  ];
+
   return (
     <>
       <Head>
@@ -37,16 +52,41 @@ export default function Home({ covids }) {
         </div>
 
         <div class="content2">
-          {covids.map((covid) => (
-            <Link href={`./country/${covid.country}`}>
-              <a>
-                <div class="box">
-                  <h2>{covid.country}</h2>
-                  <img src={covid.countryInfo.flag} />
-                </div>
-              </a>
-            </Link>
-          ))}
+          <div className="echelle">
+            <h2>Scale of cases :</h2>
+            <span>1 000 000</span>
+            <span>0</span>
+            {
+              scaleShade.map((color) => (
+                <div class="color2" style={{ backgroundColor: color }}></div>
+              ))
+            }
+          </div>
+          {
+            <div class="map">
+              <svg className="testSvg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1008 651">
+                <g>
+                  {world.map((country) => (
+                    covids.map((covid) => (
+                      covid.countryInfo.iso2 == country.id ? (
+                        <Link href={`./country/${country.id}`}>
+                          <a>
+                            <path
+                              id={covid.country}
+                              title={country.name}
+                              d={country.d}
+                              fill={covid.cases > 1000000 ? scaleShade[0] : covid.cases > 500000 ? scaleShade[1] : covid.cases > 100000 ? scaleShade[2] : covid.cases > 50000 ? scaleShade[3] : covid.cases > 10000 ? scaleShade[4] : covid.cases > 5000 ? scaleShade[5] : covid.cases > 1000 ? scaleShade[6] : covid.cases > 500 ? scaleShade[7] : covid.cases > 100 ? scaleShade[8] : covid.cases > 50 ? scaleShade[9] : covid.cases > 10 ? scaleShade[10] : covid.cases > 0 ? scaleShade[11] : "#ffffff"}
+                              strokeMiterlimit="10"
+                            />
+                          </a>
+                        </Link>
+                      ) : null
+                    ))
+                  ))}
+                </g>
+              </svg>
+            </div>
+          }
         </div>
         <div class="footer">
           <h2>
@@ -59,13 +99,13 @@ export default function Home({ covids }) {
 }
 
 export async function getStaticProps() {
-  const covids = await fetch(
-    `https://disease.sh/v3/covid-19/countries/France%2CUS%2CUnited%20Kingdom%2CChina%2CIndia%2CJapan%2CCanada%2CGermany%2CSpain%2CRussia%2CSouth%20Korea%2CEgypt%2CAustralia%2CItaly%2CGreece%2CIsrael%2CPalestine%2CLiechtenstein%2CCameroon%2CSouth%20Africa%2CBrazil%2CIreland%2CNew%20Zealand%2CFrench%20Polynesia%2CMexico%2CSeychelles%2CAlgeria%2CTunisia%2CPortugal%2CDenmark%2CAfghanistan%2CIran%2CIceland%2CPhilippines%2CThailand%2CSwitzerland%2CTunisia%2CBotswana%2CMauritius%2CBelgium%2CBhutan%2CKuwait%2CEcuador%2CNamibia%2CSenegal%2CSweden%2CNorway%2CFinland%2CNetherlands%2CAustria?yesterday=true&twoDaysAgo=true&allowNull=true`
-  ).then((r) => r.json());
+  const allCovidsCountryToday = await fetch(
+    "https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&sort=cases"
+  ).then((res) => res.json());
 
   return {
     props: {
-      covids,
+      covids: allCovidsCountryToday,
     },
   };
 }
