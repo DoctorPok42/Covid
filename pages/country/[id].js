@@ -12,69 +12,69 @@ export default function Post({ covid, lineData }) {
   }
 
   const [dataSample1, setDataSample1] = useState({
-    options: {
-      chart: {
-        id: "chart1",
-        group: "graph",
-        toolbar: {
-          show: true,
+      options: {
+        chart: {
+          id: "chart1",
+          group: "graph",
+          toolbar: {
+            show: true,
+          },
+          zoom: {
+            enabled: false,
+          },
         },
-        zoom: {
+        dataLabels: {
           enabled: false,
         },
+        colors: ["#17ead9"],
       },
-      dataLabels: {
-        enabled: false,
+      series: [
+        {
+          name: "Cases",
+          data: Object.values(lineData.timeline.cases),
+        },
+      ],
+      grid: {
+        row: {
+          colors: ["#1b213b", "transparent"],
+          opacity: 0,
+        },
       },
-      colors: ["#17ead9"],
-    },
-    series: [
-      {
-        name: "Cases",
-        data: Object.values(lineData.timeline.cases),
+      xaxis: {
+        type: "numeric",
+        categories: Object.keys(lineData.timeline.cases),
+        labels: Object.keys(lineData.timeline.cases).map((dateString) => {
+          const [month, day, year] = dateString.split("/");
+          return [day, month, year].join("/");
+        }),
       },
-    ],
-    grid: {
-      row: {
-        colors: ["#1b213b", "transparent"],
-        opacity: 0,
+      yaxis: {
+        align: "right",
+        style: {
+          color: "#fff",
+        },
       },
-    },
-    xaxis: {
-      type: "numeric",
-      categories: Object.keys(lineData.timeline.cases),
-      labels: Object.keys(lineData.timeline.cases).map((dateString) => {
-        const [month, day, year] = dateString.split("/");
-        return [day, month, year].join("/");
-      }),
-    },
-    yaxis: {
-      align: "right",
-      style: {
-        color: "#fff",
+      title: {
+        text: "Cases",
+        align: "left",
+        style: {
+          fontSize: "20px",
+          color: "#fff",
+        },
       },
-    },
-    title: {
-      text: "Cases",
-      align: "left",
-      style: {
-        fontSize: "20px",
-        color: "#fff",
+      labels: ["Cases"],
+      legend: {
+        show: true,
+        floating: true,
+        horizontalAlign: "left",
+        onItemClick: {
+          toggleDataSeries: true,
+        },
+        position: "top",
+        offsetY: 0,
+        offsetX: 60,
       },
-    },
-    labels: ["Cases"],
-    legend: {
-      show: true,
-      floating: true,
-      horizontalAlign: "left",
-      onItemClick: {
-        toggleDataSeries: true,
-      },
-      position: "top",
-      offsetY: 0,
-      offsetX: 60,
-    },
-  });
+    });
 
   const [dataSample2, setDataSample2] = useState({
     options: {
